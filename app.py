@@ -75,6 +75,11 @@ def post():
             filename = file.filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+        return "Posted successfully"
+
+    # 👇 IMPORTANT (bayata undaali)
+    return render_template('post.html')
+
         new_id = len(items) + 1
 
         new_data = {
