@@ -72,8 +72,8 @@ def post():
         filename = ""
 
         if file and file.filename != "":
-            filename = file.filename
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            filename = secure_filename(file.filename)
+            file.save(os.path.join('static', filename))
 
         # 👇 IMPORTANT: idhi ikkade undali
         new_id = len(items) + 1
