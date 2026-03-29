@@ -63,7 +63,7 @@
         <div class="item">
 
             {% if item.image %}
-                <img src="{{ url_for('static', filename='uploads/' + item.image) }}">
+                <img src="{{ url_for('static', filename=item.image) }}" width="200">
             {% endif %}
 
             <h3>{{ item.item }}</h3>
