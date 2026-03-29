@@ -40,6 +40,7 @@ def home():
     return render_template('index.html')
 
 
+
 # ✅ SEARCH PAGE
 @app.route('/search')
 def search():
