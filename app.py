@@ -92,18 +92,10 @@ def post():
 
 
 # ✅ DELETE
-@app.route('/delete/<int:item_id>')
-def delete(item_id):
-    global items
-
-    items = [i for i in items if i['id'] != item_id]
-    save_items(items)
-
-    return redirect('/search')
 
 # DELETE
 @app.route('/delete/<int:item_id>')
-def delete(item_id):
+def delete_item(item_id):
     global items
     items = [i for i in items if i['id'] != item_id]
     save_items(items)
