@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost & Found</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            color: black;
+        }
+
+        input {
+            padding: 10px;
+            width: 220px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background: #00c6ff;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Lost & Found 🔍</h2>
+
+    <!-- ✅ SEARCH -->
+    <form method="GET" action="/search">
+        <input type="text" name="search" placeholder="Search item...">
+        <br>
+        <button type="submit">Search</button>
+    </form>
+
+    <br>
+
+    <!-- ✅ POST -->
+    <a href="/post">
+        <button type="button">+ Post Item</button>
+    </a>
+
+</div>
+
+</body>
+</html>
