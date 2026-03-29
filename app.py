@@ -75,11 +75,7 @@ def post():
             filename = file.filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
-        return "Posted successfully"
-
-    # 👇 IMPORTANT (bayata undaali)
-    return render_template('post.html')
-
+        # 👇 IMPORTANT: idhi ikkade undali
         new_id = len(items) + 1
 
         new_data = {
@@ -91,17 +87,8 @@ def post():
             'image': filename
         }
 
-        # 🔥 FIND MATCHES BEFORE ADD
-        matches = find_matches(new_data, items)
-
-        # ADD ITEM
         items.append(new_data)
-        save_items(items)
-
-        # 🔥 SHOW MATCH PAGE
-        return render_template('match.html', matches=matches, new_item=new_data)
-
-    return render_template('post.html')
+        return redirect('/')
 
 
 # ✅ DELETE
