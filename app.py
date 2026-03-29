@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'static/uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
 DATA_FILE = 'data.json'
 
@@ -100,6 +100,43 @@ def delete(item_id):
     save_items(items)
 
     return redirect('/search')
+
+# DELETE
+@app.route('/delete/<int:item_id>')
+def delete(item_id):
+    global items
+    items = [i for i in items if i['id'] != item_id]
+    save_items(items)
+    return redirect('/search')
+
+
+# 🔥 IKKADA PASTE CHEYYALI (exact place)
+@app.route('/post', methods=['GET', 'POST'])
+def post():
+    if request.method == 'POST':
+        item_name = request.form['item']
+        description = request.form['description']
+        file = request.files['image']
+
+        if file and file.filename != '':
+            filename = file.filename
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            image_path = 'uploads/' + filename
+        else:
+            image_path = ''
+
+        new_item = {
+            'item': item_name,
+            'description': description,
+            'image': image_path
+        }
+
+        items.append(new_item)
+        save_items(items)
+
+        return redirect('/')
+
+    return render_template('post.html')
 
 
 if __name__ == '__main__':
