@@ -1,5 +1,7 @@
+import os
+import json
 from flask import Flask, render_template, request, redirect
-import os, json
+
 
 app = Flask(__name__)
 
